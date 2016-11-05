@@ -33,7 +33,6 @@ public class PageUrlServiceTests {
         String uri = "/cymes";
         
         String out = service.get(context, uri);
-        
         Assert.assertEquals("/", out);
     }
 }

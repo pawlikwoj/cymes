@@ -7,6 +7,7 @@ package pl.pawlik.cymes.services.base;
 
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import pl.pawlik.cymes.entities.Page;
 
 /**
  *
@@ -14,5 +15,5 @@ import org.springframework.ui.Model;
  */
 @Service
 public interface PageModelService {
-    Model getPageModel(String pageUrl);
+    Model getPageModel(Page page);
 }

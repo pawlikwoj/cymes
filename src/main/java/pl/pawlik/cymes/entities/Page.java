@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
@@ -24,6 +23,7 @@ public class Page {
     private String name;
     private String url;
     private Boolean hidden;
+    private String theme;
     
     @ManyToOne
     @JoinColumn(name = "owner_id")
@@ -80,6 +80,14 @@ public class Page {
 
     public void setBlocks(List<Block> blocks) {
         this.blocks = blocks;
+    }
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String template) {
+        this.theme = template;
     }
 
     

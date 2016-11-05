@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.pawlik.cymes.webservices;
+package pl.pawlik.cymes.services.base;
 
-import javax.jws.WebMethod;
-import javax.jws.WebService;
+import org.springframework.stereotype.Service;
+import pl.pawlik.cymes.entities.Page;
 
 /**
  *
  * @author pawlik
  */
-@WebService
-public interface PongServiceInterface {
-    @WebMethod(operationName="ping")
-    public String ping();
+@Service
+public interface ThemeService {
+
+    public String getTheme(Page page);
+    
 }

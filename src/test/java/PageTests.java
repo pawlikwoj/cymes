@@ -24,6 +24,6 @@ public class PageTests {
     PageRepository pageRepository;
     @Test
     public void test1(){
-        Assert.assertEquals(1, pageRepository.count());
+        Assert.assertEquals(2, pageRepository.count());
     }
 }

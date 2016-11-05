@@ -14,7 +14,6 @@ import pl.pawlik.cymes.entities.Page;
 import pl.pawlik.cymes.repositories.PageRepository;
 import pl.pawlik.cymes.services.base.BlockService;
 import pl.pawlik.cymes.services.base.PageModelService;
-import pl.pawlik.cymes.services.base.TemplatEngineService;
 
 /**
  *
@@ -22,16 +21,16 @@ import pl.pawlik.cymes.services.base.TemplatEngineService;
  */
 @Service
 public class PageModelServiceImpl implements PageModelService {
+    private BlockService blockService;
+    
     @Autowired
-    PageRepository pageRepository;
-    @Autowired
-    BlockService blockService;
+    public PageModelServiceImpl(BlockService blockService) {
+        this.blockService = blockService;
+    }
     
     @Override
-    @Transactional
-    public Model getPageModel(String pageUrl) {
+    public Model getPageModel(Page page) {
         Model model = new ExtendedModelMap();
-        Page page = pageRepository.findByUrl(pageUrl);
         String content = blockService.getBlocksHtml(page.getBlocks());
         model.addAttribute("content", content);
         return model;

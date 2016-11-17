@@ -17,4 +17,6 @@ import pl.pawlik.cymes.entities.Block;
 @Service
 public interface BlockService {
     public String getBlocksHtml(List<Block> blocks);
+
+    public String getBlockHtml(Block b);
 }

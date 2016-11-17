@@ -4,8 +4,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <p>content ${content}</p>
+        <header>
+            <p>logo: ${pageLogo}</p>
+            <h1>${pageName}</h1>
+        </header>
+        <main>
+            <p>content ${content}</p>
+        <main>
+        <footer>
+            ${siteWideBlock.footerBlock}
+        </footer>
+        
     </body>
 </html>
 

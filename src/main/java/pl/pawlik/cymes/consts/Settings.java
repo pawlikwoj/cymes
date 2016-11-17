@@ -11,4 +11,6 @@ package pl.pawlik.cymes.consts;
  */
 public class Settings {
         public static final String PAGE_THEME = "PAGE_THEME";
+        public static final String PAGE_NAME = "PAGE_NAME";
+        public static final String PAGE_LOGO = "PAGE_LOGO";
 }

@@ -31,5 +31,11 @@ public class BlockServiceImpl implements BlockService{
                 .reduce(html, String::concat);
         return html;
     }
+
+    @Override
+    public String getBlockHtml(Block b) {
+        System.out.println(b.getTemplate().getBody() +" + "+ b.getTiles());
+        return templatEngineService.procesTemplate(b.getTemplate().getBody(), b.getTiles());
+    }
     
 }

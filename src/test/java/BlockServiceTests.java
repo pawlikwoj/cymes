@@ -49,4 +49,26 @@ public class BlockServiceTests {
         
         Assert.assertEquals("<b>Nazwa towaru</b>", out);
     }
+    @Test
+    public void shouldGenerateOneBlockHtml(){
+        Block b = new Block();
+        
+        Template t = new Template();
+        t.setBody("<b>${tilestr}</b>");
+        
+        Tile tile = new Tile();
+        tile.setName("tilestr");
+        tile.setContent("Nazwa towaru");
+        
+        ArrayList<Tile> tiles = new ArrayList<>();
+        tiles.add(tile);
+        
+        b.setTemplate(t);
+        b.setTiles(tiles);
+        
+        
+        String html = blockService.getBlockHtml(b);
+        
+        Assert.assertEquals("<b>Nazwa towaru</b>", html);
+    }
 }

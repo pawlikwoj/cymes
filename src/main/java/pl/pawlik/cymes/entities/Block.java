@@ -21,6 +21,8 @@ import javax.persistence.OneToMany;
 public class Block {
     @Id
     private long blockId;
+    private String name;
+    private Boolean siteWide;
     
     @ManyToOne
     @JoinColumn(name = "template_id")
@@ -64,6 +66,21 @@ public class Block {
     public void setPage(Page page) {
         this.page = page;
     }
-    
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getSiteWide() {
+        return siteWide;
+    }
+
+    public void setSiteWide(Boolean siteWide) {
+        this.siteWide = siteWide;
+    }
     
 }

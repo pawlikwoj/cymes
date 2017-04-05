@@ -24,20 +24,28 @@
 
     <context:component-scan base-package="pl.pawlik.cymes" /> 
     <context:annotation-config /> 
+    
+    <mvc:default-servlet-handler />
     <mvc:annotation-driven />
     <security:global-method-security secured-annotations="enabled" pre-post-annotations="enabled" />
+   
+
     
-    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+    <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"  >
         <property name="suffix" value=".ftl" />
         <property name="exposeSpringMacroHelpers" value="true" />
+        <property name="requestContextAttribute" value="rc"/>
     </bean>
     
-     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <property name="templateLoaderPath"
-                  value="/WEB-INF/themes/" />
-     </bean>
+    <!-- testy -->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+         <property name="order" value="1" />
+    </bean> -->
     
-
+    
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/resources/themes/" />
+    </bean>
     
     <tx:annotation-driven />
     <bean id="entityManagerFactory"
@@ -83,5 +91,6 @@
         <property name="maxUploadSize" value="10000000" />
     </bean>
     
-    
+   <!-- <mvc:resources  mapping="/resources/**" location="/resources/static/" order="0"  />
+    <mvc:resources  mapping="/resources/clean/**" location="/resources/themes/clean/static/" order="0"  /> -->
 </beans>

@@ -6,6 +6,7 @@
 package pl.pawlik.cymes.services.base;
 
 import org.springframework.stereotype.Service;
+import pl.pawlik.cymes.dto.ThemeDTO;
 import pl.pawlik.cymes.entities.Page;
 
 /**
@@ -16,5 +17,6 @@ import pl.pawlik.cymes.entities.Page;
 public interface ThemeService {
 
     public String getTheme(Page page);
+    public ThemeDTO getThemeForModel(Page page);
     
 }

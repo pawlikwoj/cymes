@@ -9,6 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -26,6 +28,7 @@ import pl.pawlik.cymes.services.base.ThemeService;
  */
 @Controller
 @RequestMapping("/")
+@Order(1)
 public class PageController {
     @Autowired
     public PageRepository pageRepository;
@@ -36,8 +39,14 @@ public class PageController {
     @Autowired
     public ThemeService themeService;
     
+    @Secured({"PERM_ADMIN"})
+    @RequestMapping(value = "/admin")
+    public String admin(){
+        return "/admin/admin";
+    }
+    
     @Transactional
-    @RequestMapping(value="/**",method=RequestMethod.GET)
+    @RequestMapping(value="/web/**",method=RequestMethod.GET)
     public String indexPage(Model model,HttpServletRequest webRequest){
         Logger.getGlobal().log(Level.SEVERE, webRequest.getRequestURI());
         String uri = pageUrlService.get(webRequest.getContextPath(), webRequest.getRequestURI());
@@ -48,6 +57,6 @@ public class PageController {
         
         String theme = themeService.getTheme(page);
         
-        return theme+"/views/default";
+        return theme+"/views/default";  
     }
 }

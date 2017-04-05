@@ -7,7 +7,9 @@ package pl.pawlik.cymes.services.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+import pl.pawlik.cymes.blockRenderers.BlockRenderer;
 import pl.pawlik.cymes.entities.Block;
 import pl.pawlik.cymes.services.base.BlockService;
 import pl.pawlik.cymes.services.base.TemplatEngineService;
@@ -20,6 +22,9 @@ import pl.pawlik.cymes.services.base.TemplatEngineService;
 public class BlockServiceImpl implements BlockService{
     @Autowired
     TemplatEngineService templatEngineService;
+
+    @Autowired
+    private ApplicationContext appContext;
     
     @Override
     public String getBlocksHtml(List<Block> blocks) {
@@ -34,8 +39,7 @@ public class BlockServiceImpl implements BlockService{
 
     @Override
     public String getBlockHtml(Block b) {
-        System.out.println(b.getTemplate().getBody() +" + "+ b.getTiles());
-        return templatEngineService.procesTemplate(b.getTemplate().getBody(), b.getTiles());
+        BlockRenderer renderer = (BlockRenderer) appContext.getBean("webContentBlockRenderer");
+        return  renderer.render(b) ;//templatEngineService.procesTemplate(b.getTemplate().getBody(), b.getTiles());
     }
-    
 }

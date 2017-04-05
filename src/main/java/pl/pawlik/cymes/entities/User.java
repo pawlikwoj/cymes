@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pl.pawlik.cymes.entities;
 
+import java.util.Collection;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 /**
  *
@@ -22,6 +17,14 @@ public class User {
     private String password;
     @OneToMany(mappedBy = "owner")
     private List<Page> pages;
+
+    @ManyToMany
+    @JoinTable(
+            joinColumns = @JoinColumn(
+                    name = "userId", referencedColumnName = "userId"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "roleId", referencedColumnName = "roleId"))
+    private Collection<Role> roles;
 
     public long getUserId() {
         return userId;
@@ -55,6 +58,11 @@ public class User {
         this.password = password;
     }
 
-    
-  
+    public Collection<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
+    }
 }

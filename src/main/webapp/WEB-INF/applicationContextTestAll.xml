@@ -4,6 +4,5 @@
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
 	<import resource="persistenceTest-context.xml" />
-        <import resource="security-context.xml"/>
-
+	<import resource="security-context.xml"/>
 </beans>

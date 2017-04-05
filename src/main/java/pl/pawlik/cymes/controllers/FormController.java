@@ -53,7 +53,7 @@ public class FormController {
     @RequestMapping(value="/login", method=RequestMethod.GET)
     public String login() {
        
-        return "login";
+        return "admin/login";
     }
     
     @RequestMapping(value="/formularz", method=RequestMethod.GET)
@@ -135,7 +135,7 @@ public class FormController {
     @RequestMapping(value="/rest", method=RequestMethod.GET)
     public ResponseEntity<User> get() {
         User kot = new User();
-        kot.setName("pawlik");
+        kot.setName("pawliksdfsadf");
         kot.setUserId(3);
         return new ResponseEntity<User>(kot, new HttpHeaders(), HttpStatus.OK);
     }

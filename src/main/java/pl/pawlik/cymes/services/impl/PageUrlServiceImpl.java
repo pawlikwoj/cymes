@@ -20,13 +20,13 @@ public class PageUrlServiceImpl implements PageUrlService{
     public String get(String appContext, String requestUri) {
         String pageUri;
         
-        if(appContext.equals(requestUri)){
+        if(appContext.equals(requestUri) || (appContext+"/web").equals(requestUri) ){
             pageUri = "/";
         } else {
             int uriStart = appContext.length();
-            pageUri = requestUri.substring(uriStart);
+            pageUri = requestUri.substring(uriStart+4);
         }
-        
+
         return pageUri;
     }
     

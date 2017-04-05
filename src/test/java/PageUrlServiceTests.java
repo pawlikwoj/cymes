@@ -1,14 +1,7 @@
-
 import org.junit.Assert;
 import org.junit.Test;
 import pl.pawlik.cymes.services.base.PageUrlService;
 import pl.pawlik.cymes.services.impl.PageUrlServiceImpl;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -20,7 +13,7 @@ public class PageUrlServiceTests {
     @Test
     public void shouldGeneratePageUrl(){
         String context = "/cymes";
-        String uri = "/cumes/url/sample/page";
+        String uri = "/cumes/web/url/sample/page";
         
         String out = service.get(context, uri);
         
@@ -32,6 +25,15 @@ public class PageUrlServiceTests {
         String context = "/cymes";
         String uri = "/cymes";
         
+        String out = service.get(context, uri);
+        Assert.assertEquals("/", out);
+    }
+
+    @Test
+    public void shouldReturnRootOnContextUriAndWeb(){
+        String context = "/cymes";
+        String uri = "/cymes/web";
+
         String out = service.get(context, uri);
         Assert.assertEquals("/", out);
     }

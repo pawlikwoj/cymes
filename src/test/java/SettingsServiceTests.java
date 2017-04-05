@@ -10,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import pl.pawlik.cymes.repositories.SettingsRepository;
 import pl.pawlik.cymes.services.base.SettingsService;
 import pl.pawlik.cymes.services.impl.SettingsServiceImpl;
@@ -20,6 +21,7 @@ import pl.pawlik.cymes.services.impl.SettingsServiceImpl;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/applicationContextTestAll.xml","file:src/main/webapp/WEB-INF/applicationContext.xml"})
+@WebAppConfiguration
 public class SettingsServiceTests {
     @Autowired
     SettingsRepository settingsRepository;
